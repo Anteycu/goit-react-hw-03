@@ -1,0 +1,9 @@
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  /* gap: 12px; */
+}
+
+.contactInfo h2 {
+  font-size: 24px;
+}
