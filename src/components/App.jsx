@@ -8,13 +8,18 @@ function App() {
   const [contacts, setContacts] = useState(() => {
     return initContacts;
   });
+  const [query, setQuery] = useState("");
+
+  const onSearchResult = contacts.filter((item) =>
+    item.name.toLowerCase().includes(query.toLowerCase())
+  );
 
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm contacts={contacts} onSubmit={setContacts} />
-      <SearchBox />
-      <ContactList contacts={contacts} />
+      <SearchBox query={query} onSearch={setQuery} />
+      <ContactList contacts={onSearchResult} />
     </div>
   );
 }
