@@ -14,10 +14,14 @@ function App() {
     item.name.toLowerCase().includes(query.toLowerCase())
   );
 
+  const addContact = (newContact) => {
+    setContacts((prevContacts) => [...prevContacts, newContact]);
+  };
+
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm contacts={contacts} onSubmit={setContacts} />
+      <ContactForm onAdd={addContact} />
       <SearchBox query={query} onSearch={setQuery} />
       <ContactList contacts={onSearchResult} />
     </div>
