@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ContactForm from "./ContactForm/ContactForm";
 import SearchBox from "./SearchBox/SearchBox";
 import ContactList from "./ContactList/ContactList";
@@ -6,9 +6,14 @@ import initContacts from "../initContacts.json";
 
 function App() {
   const [contacts, setContacts] = useState(() => {
-    return initContacts;
+    const savedContacts = JSON.parse(localStorage.getItem("contacts"));
+    return savedContacts ?? initContacts;
   });
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
 
   const onSearchResult = contacts.filter((item) =>
     item.name.toLowerCase().includes(query.toLowerCase())
