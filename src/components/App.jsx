@@ -17,13 +17,18 @@ function App() {
   const addContact = (newContact) => {
     setContacts((prevContacts) => [...prevContacts, newContact]);
   };
+  const deleteContact = (id) => {
+    setContacts((prevContacts) =>
+      prevContacts.filter((contact) => contact.id !== id)
+    );
+  };
 
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox query={query} onSearch={setQuery} />
-      <ContactList contacts={onSearchResult} />
+      <ContactList contacts={onSearchResult} onDelete={deleteContact} />
     </div>
   );
 }
