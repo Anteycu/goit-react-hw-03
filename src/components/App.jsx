@@ -29,7 +29,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox query={query} onSearch={setQuery} />
